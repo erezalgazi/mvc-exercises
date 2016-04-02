@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Partner Exercise 2</title>
+
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="http://backbonejs.org/backbone-min.js"></script>
+  </head>
+
+  <body>
+    <input type="text" id="input">
+    <button id="submit">Submit</button>
+    <div id="display"></div>
+
+    <script>
+      var Controller = function (model, view) {
+        this.model = model;
+        this.view = view;
+
+        this.updateText() {
+          var text = $('#input').val();
+
+          // TODO: Manipulate the Model's data, then notify the view to render itself
+        }
+      }
+
+      var model = new Backbone.Model();
+      var view = new Backbone.View({ model, el: $('#display') });
+
+      view.render = function () {
+        // TODO: Display the Model's text in the div with id 'display'
+        // Hint: Remember how to "get" data from the Model
+      };
+
+      var controller = new Controller(model, view);
+
+      $('button').on('click', function (e) {
+        e.preventDefault();
+        controller.updateText();
+      });
+    </script>
+  </body>
+</html>
