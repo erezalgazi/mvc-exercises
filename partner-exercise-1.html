@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <title>Partner Exercise 1</title>
+  </head>
+
+  <body>
+    <input type="text" id="input">
+    <button id="submit">Submit</button>
+    <div id="display"></div>
+
+    <script>
+      var Model = function () {
+        this.text = null;
+
+        this.getText = function () {
+          // TODO: Return the text of the Model
+        }
+
+        this.setText = function (text) {
+          // TODO: Set the text of the Model
+        }
+      };
+
+      var View = function (model) {
+        this.model = model;
+
+        this.render = function () {
+          // TODO: Display the Model's text in the div with id 'display'
+          // Hint: Get the div from the DOM and set its innerText
+        }
+      }
+
+      var Controller = function (model, view) {
+        this.model = model;
+        this.view = view;
+
+        this.updateText = function () {
+          // TODO: Update the model text with the input value
+        }
+      }
+
+      var model = new Model();
+      var view = new View(model);
+      var controller = new Controller(model, view);
+
+      var $button = $('button').on('click', function (e) {
+        e.preventDefault();
+        // call the right function here
+      });
+    </script>
+  </body>
+</html>
