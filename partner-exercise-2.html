@@ -14,12 +14,14 @@
     <div id="display"></div>
 
     <script>
-      var Controller = function (model, view) {
+      var Controller = function (model) {
         this.model = model;
-        this.view = view;
+        // this.view = view;
 
-        this.updateText() {
-          var text = $('#input').val();
+        this.updateText = function () {
+          var text = null; 
+          text = $('#input').val(); // first step phase 2: update the data of the model
+          this.model.set('text',text);
 
           // TODO: Manipulate the Model's data, then notify the view to render itself
         }
@@ -28,16 +30,22 @@
       var model = new Backbone.Model();
       var view = new Backbone.View({ model, el: $('#display') });
 
+      // third step is to update the page itself
       view.render = function () {
+
+        var userInput = model.get('text');
+        view.$el.append(userInput + '<br>');
+        
         // TODO: Display the Model's text in the div with id 'display'
         // Hint: Remember how to "get" data from the Model
       };
+      view.listenTo(model, 'change', view.render); // second step is to set a listener, to see if the data has changed and to invoke changing the DOM
 
-      var controller = new Controller(model, view);
+      var controller = new Controller(model);
 
       $('button').on('click', function (e) {
         e.preventDefault();
-        controller.updateText();
+        controller.updateText(); //first step is to update the data of the model
       });
     </script>
   </body>

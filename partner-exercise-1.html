@@ -12,21 +12,25 @@
 
     <script>
       var Model = function () {
-        this.text = null;
-
-        this.getText = function () {
-          // TODO: Return the text of the Model
-        }
+        // this.text = null;
 
         this.setText = function (text) {
+          this.txt = text;
           // TODO: Set the text of the Model
+        }
+
+        this.getText = function () {
+          return this.txt;
+          // TODO: Return the text of the Model
         }
       };
 
       var View = function (model) {
-        this.model = model;
+        this.modelCurrent = model;
 
         this.render = function () {
+          var txt = this.modelCurrent.getText();
+          $('#display').append('<p>' + txt + '</p>');
           // TODO: Display the Model's text in the div with id 'display'
           // Hint: Get the div from the DOM and set its innerText
         }
@@ -35,8 +39,11 @@
       var Controller = function (model, view) {
         this.model = model;
         this.view = view;
+        
 
-        this.updateText = function () {
+        this.updateText = function (txt) {
+          this.model.setText(txt);
+          this.view.render();
           // TODO: Update the model text with the input value
         }
       }
@@ -47,6 +54,8 @@
 
       var $button = $('button').on('click', function (e) {
         e.preventDefault();
+        var txt = $('#input').val();
+        controller.updateText(txt);
         // call the right function here
       });
     </script>
